@@ -5,15 +5,15 @@ app.get('/',(req,res) => {
     res.send('<h1>Welcome to express app 1.5</h1>')
 })
 
-app.get('/product1',(req,res) => {
+app.get('/products',(req,res) => {
     res.send([
         {
             productId: '101',
-            productName: 'Yamaha'
+            productName: 'Yamaha 11'
         },
         {
             productId: '102',
-            productName: 'Honda'
+            productName: 'Honda 22'
         }
     ])
 })
