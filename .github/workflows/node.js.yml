@@ -43,6 +43,7 @@ jobs:
         password: ${{ secrets.SSH_UAT_PASSWORD }}
         #port: ${{ secrets.SSH_PORT }}
         script: |
+          sudo su
           cd /var/www/express-app
           git pull https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PASSWORD }}@github.com/DEGITOBangkok/tpi-api uat
           npm install
