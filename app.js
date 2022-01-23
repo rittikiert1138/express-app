@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 app.get('/',(req,res) => {
-    res.send('<h1>Welcome to express app 1.3</h1>')
+    res.send('<h1>Welcome to express app 1.4</h1>')
 })
 
 app.get('/product1',(req,res) => {
