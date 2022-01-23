@@ -1,0 +1,49 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: CI/CD UAT
+
+on:
+  push:
+    branches:
+      - uat
+
+jobs:
+  # test:
+
+  #   runs-on: ubuntu-latest
+
+  #   strategy:
+  #     matrix:
+  #       node-version: [10.x, 12.x, 14.x]
+
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Use Node.js ${{ matrix.node-version }}
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: ${{ matrix.node-version }}
+  #   - name: npm install and test
+  #     run: |
+  #       npm install
+  #       npm test
+  #     env:
+  #       CI: true
+
+  deploy:
+    # needs: [test]
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: SSH and deploy node app
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_UAT_HOST }}
+        username: ${{ secrets.SSH_UAT_USERNAME }}
+        password: ${{ secrets.SSH_UAT_PASSWORD }}
+        #port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd /var/www/express-app
+          git pull https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PASSWORD }}@github.com/DEGITOBangkok/tpi-api uat
+          npm install
+          pm2 restart express-app
