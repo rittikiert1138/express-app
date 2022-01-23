@@ -6,7 +6,7 @@ name: CI/CD UAT
 on:
   push:
     branches:
-      - uat
+      - main
 
 jobs:
   # test:
