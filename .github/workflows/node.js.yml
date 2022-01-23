@@ -46,4 +46,4 @@ jobs:
           cd /var/www/express-app
           git pull https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PASSWORD }}@github.com/rittikiert1138/express-app main
           npm install --production
-          pm2 restart express-app
+          pm2 delete all
