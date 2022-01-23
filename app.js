@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 app.get('/',(req,res) => {
-    res.send('<h1>Welcome to express app 1.1</h1>')
+    res.send('<h1>Welcome to express app 1.2</h1>')
 })
 
 app.get('/product1',(req,res) => {
@@ -14,10 +14,6 @@ app.get('/product1',(req,res) => {
         {
             productId: '102',
             productName: 'Honda'
-        },
-        {
-            productId: '103',
-            productName: 'Mazda'
         }
     ])
 })

@@ -44,6 +44,6 @@ jobs:
         #port: ${{ secrets.SSH_PORT }}
         script: |
           cd /var/www/express-app
-          git pull https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PASSWORD }}@github.com/DEGITOBangkok/tpi-api uat
-          npm install
+          git pull https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PASSWORD }}@github.com/rittikiert1138/express-app main
+          npm install --production
           pm2 restart express-app
